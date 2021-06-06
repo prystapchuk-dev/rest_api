@@ -3,6 +3,8 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
+
+
 include_once '../config/database.php';
 include_once '../objects/product.php';
 
@@ -27,7 +29,7 @@ if ($num > 0) {
             "id" => $id,
             "name" => $name,
             "description" => html_entity_decode($desciption),
-            "price" => $desciption,
+            "price" => $price,
             "category_id" => $category_id,
             "category_name" => $category_name
         );
