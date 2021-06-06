@@ -3,7 +3,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$home_url = "http://localhost/api/";
+$home_url = "http://localhost/rest-api/";
 
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 

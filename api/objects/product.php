@@ -18,7 +18,7 @@ class Product {
 
     function read() {
         $query = "SELECT
-                    c.name as category_name, p.id, p.name, p.description, p.price, p.category, p.created
+                    c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
                   FROM
                     " . $this->table_name . " p
                   LEFT JOIN
@@ -66,7 +66,7 @@ class Product {
     function readOne() {
 
         $query = "SELECT
-                    c.name as category_name, p.id, p.name, p.description, p.price, p.category, p.created
+                    c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
                   FROM
                     " . $this->table_name . " p
                   LEFT JOIN
@@ -147,7 +147,7 @@ class Product {
 
     function search() {
         $query = "SELECT
-                    c.name as category_name, p.id, p.name, p.description, p.price, p.category, p.created
+                    c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
                   FROM
                     " . $this->table_name . " p
                   LEFT JOIN
@@ -176,7 +176,7 @@ class Product {
     public function readPaging($from_record_num, $records_per_page) {
 
         $query = "SELECT
-                    c.name as category_name, p.id, p.name, p.description, p.price, p.category, p.created
+                    c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
                   FROM
                     " . $this->table_name . " p
                   LEFT JOIN
@@ -197,7 +197,7 @@ class Product {
 
     }
 
-    public function count() {
+    public function rowCount() {
 
         $query = "SELECT COUNT(*) as total_rows FROM " . $this->table_name . "";
 
