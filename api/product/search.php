@@ -15,11 +15,11 @@ $product = new Product($db);
 $keywords = isset($_GET['s']) ? $_GET['s'] : "";
 
 $stmt = $product->search($keywords);
-$num = $product->rowCount();
+$num = $stmt->rowCount();
 
 if ($num > 0) {
-    $product_arr = array();
-    $product_arr['records'] = array();
+    $products_arr = array();
+    $products_arr['records'] = array();
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
@@ -27,13 +27,13 @@ if ($num > 0) {
         $product_item = array(
             "id" => $id,
             "name" => $name,
-            "description" => html_entity_decode($desciption),
+            "description" => html_entity_decode($description),
             "price" => $price,
             "category_id" => $category_id,
             "category_name" => $category_name
         );
 
-        array_push($product_arr['records'], $product_item);
+        array_push($products_arr['records'], $product_item);
 
     }
 

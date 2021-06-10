@@ -133,7 +133,7 @@ class Product {
 
         $this->id = htmlspecialchars(strip_tags($this->id));
 
-        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(1, $this->id);
 
         if ($stmt->execute()) {
 
@@ -145,7 +145,7 @@ class Product {
 
     }
 
-    function search() {
+    function search($keywords) {
         $query = "SELECT
                     c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
                   FROM
@@ -154,7 +154,7 @@ class Product {
                     categories c
                         ON p.category_id = c.id
                   WHERE
-                    p.name LIKE OR p.description LIKE ? OR c.name LIKE ?
+                    p.name LIKE ? OR p.description LIKE ? OR c.name LIKE ?
                   ORDER BY 
                     p.created DESC";
 
@@ -189,7 +189,7 @@ class Product {
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
-        $stmt->bindParam(1, $records_per_page, PDO::PARAM_INT);
+        $stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
 
         $stmt->execute();
 

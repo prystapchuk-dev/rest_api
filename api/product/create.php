@@ -26,7 +26,7 @@ if (
     $product->price = $data->price;
     $product->description = $data->description;
     $product->category_id = $data->category_id;
-    $product->created = data('Y-m-d H:i:s');
+    $product->created = date('Y-m-d H:i:s');
 
     if ($product->create()) {
         http_response_code(201);

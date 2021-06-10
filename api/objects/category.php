@@ -32,20 +32,19 @@ class  Category
     }
 
 
-    public function read() {
+    public function rowCount() {
 
-        $query = "SELECT
-                    id, name, description
-                  FROM
-                    " . $this->table_name . "
-                  ORDER BY
-                    name";
+        $query = "SELECT COUNT(*) 
+                    AS total_rows
+                    FROM " . $this->table_name . "";
 
         $stmt = $this->conn->prepare($query);
 
         $stmt->execute();
 
-        return $stmt;
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row['total_rows'];
     }
 
 }

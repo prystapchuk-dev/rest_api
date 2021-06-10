@@ -3,16 +3,18 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-include_once '../config/core.php';
+
+include_once '../config/database.php';
 include_once '../objects/category.php';
+
 
 
 $database = new Database();
 $db = $database->getConnection();
 
-$product = new Product($db);
+$category = new Category($db);
 
-$stmt = $category->read();
+$stmt = $category->readAll();
 $num = $stmt->rowCount();
 
 if ($num > 0) {
@@ -35,7 +37,7 @@ if ($num > 0) {
 
     http_response_code(200);
 
-    echo json_encode($categories_arr_arr);
+    echo json_encode($categories_arr);
 
 } else {
 

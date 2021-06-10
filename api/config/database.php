@@ -5,7 +5,7 @@ class Database {
     private $db_name = 'api_db';
     private $username = 'root';
     private $password = '';
-    public $conn;
+    public  $conn;
 
     public function getConnection() {
         $this->conn = null;
